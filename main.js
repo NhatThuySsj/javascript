@@ -942,3 +942,49 @@ var courses = [
 // var array = ['a', 'b', 'c', 'a', 'b', 'c']
 
 // console.log([...(new Set(array))])                   (Lọc ra ra khỏi những phần tử giổng nhau)
+
+// var h1Elements = document.querySelectorAll('h1');
+
+// for(var i = 0; i < h1Elements.length; ++i) {
+//     h1Elements[i].onclick = function(e) {
+//         console.log(e.target)
+//     }
+// }
+
+// var inputElement = document.querySelector('input[type="text"')
+
+// inputElement.onkeyup = function(e) {
+//     console.log(e.which)
+
+//     switch(e.which) {
+//         case 27:
+//             console.log('EXIT')
+//             break;
+//     }
+// }
+
+// document.onkeydown = function(e) {
+//     switch(e.which) {
+//         case 27:
+//             console.log('EXIT')
+//             break;
+//         case 37:
+//             console.log('Left')
+//             break;
+//         case 39:
+//             console.log('Right')
+//             break;
+//     }
+// }
+
+var btn = document.getElementById('btn')
+
+function viec1() {
+    console.log('viec1');
+}
+
+btn.addEventListener('click', viec1)
+
+setTimeout(function () {
+    btn.removeEventListener('click', viec1)
+}, 3000);
