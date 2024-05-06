@@ -977,14 +977,117 @@ var courses = [
 //     }
 // }
 
-var btn = document.getElementById('btn')
+// var btn = document.getElementById('btn')
 
-function viec1() {
-    console.log('viec1');
-}
+// function viec1() {
+//     console.log('viec1');
+// }
 
-btn.addEventListener('click', viec1)
+// btn.addEventListener('click', viec1)
 
-setTimeout(function () {
-    btn.removeEventListener('click', viec1)
-}, 3000);
+// setTimeout(function () {
+//     btn.removeEventListener('click', viec1)
+// }, 3000);
+
+function validator(options) {
+    function validate(inputElement, rule) {
+      const errorElement = inputElement.parentElement.querySelector('.form-message');
+      const errorMessage = rule.test(inputElement.value);
+      if (errorMessage) {
+        errorElement.innerText = errorMessage;
+        inputElement.parentElement.classList.add('invalid');
+      } else {
+        errorElement.innerText = '';
+        inputElement.parentElement.classList.remove('invalid');
+      }
+      return !errorMessage;
+    }
+  
+    const formElement = document.querySelector(options.form);
+    if (formElement) {
+      formElement.onsubmit = function(e) {
+        e.preventDefault();
+        let isFormValid = true;
+        options.rules.forEach(function(rule) {
+          const inputElement = formElement.querySelector(rule.selector);
+          if (inputElement) {
+            const errorMessage = rule.test(inputElement.value);
+            if (errorMessage) {
+              const errorElement = inputElement.parentElement.querySelector('.form-message');
+              errorElement.innerText = errorMessage;
+              inputElement.parentElement.classList.add('invalid');
+              isFormValid = false;
+            }
+          }
+        });
+  
+        if (isFormValid) {
+          if (typeof options.onSubmit === 'function') {
+            var enableInputs = formElement.querySelectorAll('[name]')
+            var formValues = Array.from(enableInputs).reduce(function(values, input) {
+                values[input.name] = input.value;
+                return values;
+            }, {});
+            
+            options.onSubmit(formValues);
+          } 
+          
+          else {
+            formElement.submit();
+          }
+        }
+      };
+
+      options.rules.forEach(function(rule) {
+        const inputElement = formElement.querySelector(rule.selector);
+        if (inputElement) {
+          inputElement.onblur = function() {
+            validate(inputElement, rule);
+          };
+          inputElement.oninput = function() {
+            const errorElement = inputElement.parentElement.querySelector('.form-message');
+            errorElement.innerText = '';
+            inputElement.parentElement.classList.remove('invalid');
+          };
+        }
+      });
+    }
+  }
+  
+  validator.isRequired = function(selector, message) {
+    return {
+      selector: selector,
+      test: function(value) {
+        return value.trim() ? undefined : message || 'Vui lòng nhập trường này!';
+      }
+    };
+  };
+  
+  validator.isEmail = function(selector, message) {
+    return {
+      selector: selector,
+      test: function(value) {
+        const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return value.trim() ? (regex.test(value) ? undefined : message || 'Vui lòng nhập địa chỉ Email!') : message || 'Vui lòng nhập địa chỉ Email!';
+      }
+    };
+  };
+  
+  validator.minLength = function(selector, min, message) {
+    return {
+      selector: selector,
+      test: function(value) {
+        return value.trim() ? (value.length >= min ? undefined : message || `Độ dài mật khẩu tối thiểu là ${min} ký tự!`) : message || `Độ dài mật khẩu tối thiểu là ${min} ký tự!`;
+      }
+    };
+  };
+  
+  validator.isConfirmed = function(selector, getConfirmValue, message) {
+    return {
+      selector: selector,
+      test: function(value) {
+        const confirmValue = getConfirmValue();
+        return value.trim() && confirmValue.trim() ? (value === confirmValue ? undefined : message || 'Mật khẩu xác nhận không khớp!') : message || 'Mật khẩu xác nhận không khớp!';
+      }
+    };
+  };
