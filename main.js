@@ -990,15 +990,26 @@ var courses = [
 // }, 3000);
 
 function validator(options) {
+
+  function getParent(element, selector) {
+    while (element.parentElement) {
+      if (element.parentElement.matches(selector)) {
+        return element.parentElement;
+      }
+      
+      element = element.parentElement;
+    }
+  }
+
     function validate(inputElement, rule) {
-      const errorElement = inputElement.parentElement.querySelector('.form-message');
-      const errorMessage = rule.test(inputElement.value);
+      var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
+      var errorMessage = rule.test(inputElement.value);
       if (errorMessage) {
         errorElement.innerText = errorMessage;
-        inputElement.parentElement.classList.add('invalid');
+        getParent(inputElement, options.formGroupSelector).classList.add('invalid');
       } else {
         errorElement.innerText = '';
-        inputElement.parentElement.classList.remove('invalid');
+        getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
       }
       return !errorMessage;
     }
@@ -1013,9 +1024,9 @@ function validator(options) {
           if (inputElement) {
             const errorMessage = rule.test(inputElement.value);
             if (errorMessage) {
-              const errorElement = inputElement.parentElement.querySelector('.form-message');
+              const errorElement = getParent(inputElement, options.formGroupSelector).querySelector('.form-message');
               errorElement.innerText = errorMessage;
-              inputElement.parentElement.classList.add('invalid');
+              getParent(inputElement, options.formGroupSelector).classList.add('invalid');
               isFormValid = false;
             }
           }
@@ -1045,9 +1056,9 @@ function validator(options) {
             validate(inputElement, rule);
           };
           inputElement.oninput = function() {
-            const errorElement = inputElement.parentElement.querySelector('.form-message');
+            const errorElement = getParent(inputElement, options.formGroupSelector).querySelector('.form-message');
             errorElement.innerText = '';
-            inputElement.parentElement.classList.remove('invalid');
+            getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
           };
         }
       });

@@ -63,9 +63,10 @@
         validator({
             form: '#form-1',
             errorSelector: '.form-message',
+            formGroupSelector: '.form-group',
             rules: [
                 validator.isRequired('#fullname', 'Vui lòng nhập tên tài khoản phù hợp!'),
-                // validator.isEmail('#email'),
+                validator.isEmail('#email'),
                 validator.minLength('#password', 8),
                 validator.isConfirmed('password_confirmation', function() {
                     return document.querySelector('#form-1 #password').value;
