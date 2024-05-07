@@ -1,64 +1,86 @@
-.main {
-    width: 100%;
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-submit {
-    display: block;
     width: 100%;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.form-submit:hover {
-    background-color: #0056b3;
-}
-
-.form-submit:active {
-    background-color: #004080;
-}
-
-.form-message {
-    display: block;
-    margin-top: 5px;
-    font-size: 14px;
-    color: red;
-}
-
-.spacer {
+  }
+  
+  .heading {
+    text-align: center;
     margin-bottom: 20px;
-}
-
-/* Optional: Customize input fields */
-input[type="text"],
-input[type="password"] {
-    width: calc(100% - 20px);
+  }
+  
+  .decs {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+  }
+  
+  .spacer {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Optional: Customize placeholder text color */
-input::placeholder {
-    color: #999;
-}
+    border-radius: 3px;
+  }
+  
+  .form-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .form-submit {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .form-submit:hover {
+    background-color: #45a049;
+  }
+  
+  .invalid input[type="text"],
+  .invalid input[type="password"] {
+    border-color: red;
+  }
