@@ -7,71 +7,57 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- onload="startTime()"
+    <div id="timer"></div> -->
+
+    <!-- <div id="output"></div> -->
+
+    <!-- <div id="result"></div> -->
+
+    <!-- <h2>Nhập điểm</h2>
+  <div>
+    <label for="diem1">Điểm kiểm tra 1:</label>
+    <input type="number" id="diem1" step="0.1"><br>
     
-    <!-- <input type="text">
-    <input type="checkbox">
+    <label for="diem2">Điểm kiểm tra 2:</label>
+    <input type="number" id="diem2" step="0.1"><br>
+    
+    <label for="diem3">Điểm kiểm tra 3:</label>
+    <input type="number" id="diem3" step="0.1"><br>
+    
+    <label for="diemGiuaky">Điểm thi giữa kỳ:</label>
+    <input type="number" id="diemGiuaky" step="0.1"><br>
+    
+    <label for="diemCuoiKy">Điểm thi cuối kỳ:</label>
+    <input type="number" id="diemCuoiKy" step="0.1"><br>
+    
+    <button onclick="tinhTongDiem()">Tính tổng điểm</button>
+  </div>
+  
+  <h2>Kết quả</h2>
+  <div id="ketQua"></div> -->
 
-    <select>
-        <option value="1">JS</option>
-        <option value="2">PT</option>
-        <option value="3">RB</option>
-    </select> -->
+<!-- <h2>Enter your age:</h2>
+<input type="number" id="ageInput">
 
-    <!-- <button id="btn">Click me!</button> -->
+<script>
+// Lấy tham chiếu đến ô nhập liệu
+var ageInput = document.getElementById("ageInput");
 
-    <div class="main">
-
-        <form action="" method="post" class="form" id="register-form">
-            <h3 class="heading">Đăng ký tài khoản</h3>
-            <p class="decs">Đăng ký tài khoản để tham gia cộng đồng!</p>
-
-            <div class="spacer"></div>
-
-            <div class="form-group">
-                <label for="fullname" class="form-label">Tên tài khoản</label>
-                <input type="text" name="fullname" rules="required" id="fullname" placeholder="Email">
-                <span class="form-message"></span>
-            </div>
-
-            <div class="form-group">
-                <label for="email" class="form-label">Xác minh bằng email</label>
-                <input type="text" name="email" rules="required|email" id="email" placeholder="Email">
-                <span class="form-message"></span>
-            </div>
-
-            <div class="form-group">
-                <label for="password" class="form-label">Nhập mật khẩu</label>
-                <input type="password" name="password" rules="required|min:6" id="password" placeholder="Điền mật khẩu">
-                <span class="form-message"></span>
-            </div>
-
-            <button class="form-submit">Đăng ký</button>
-        </form>
-
-    </div>
+// Gắn sự kiện onchange
+ageInput.onchange = function() {
+    // Khi giá trị của ô nhập liệu thay đổi, hiển thị thông báo
+    alert("Your age is: " + ageInput.value);
+};
+</script> -->
 
     <script src="./main.js"></script>
 
-    <script>
-        
-        // validator({
-        //     form: '#form-1',
-        //     errorSelector: '.form-message',
-        //     formGroupSelector: '.form-group',
-        //     rules: [
-        //         validator.isRequired('#fullname', 'Vui lòng nhập tên tài khoản phù hợp!'),
-        //         validator.isEmail('#email'),
-        //         validator.minLength('#password', 8),
-        //         validator.isConfirmed('password_confirmation', function() {
-        //             return document.querySelector('#form-1 #password').value;
-        //         }, 'Mật khẩu nhập nhập lại không chính xác!')
-        //     ],
-        //     onSubmit: function(data) {
-        //         console.log(data)
-        //     }
-        // })                                                                                               (Thư viện Java cách 1)
-
-            validator('#register-form');
-    </script>
+    <!-- <input type="button" value="Click me" ondblclick="showMessage()"/>
+<script>
+    function showMessage(){
+        alert('Sự kiện dbclick xảy ra!');
+    }
+</script> -->
 </body>
 </html>
